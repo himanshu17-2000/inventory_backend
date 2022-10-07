@@ -7,6 +7,9 @@ import Authorization from "../middleware/Authorization.js"
 import jwt from 'jsonwebtoken'
 
 // resgistering 
+router.get('/' , (req, res)=>{
+    res.send('hello sakshi himanshu mansi ') 
+})
 router.post("/register" ,validInfo , async (req,res)=>{
     try{
         // 1 destructure req.body   
