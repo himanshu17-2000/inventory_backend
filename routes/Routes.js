@@ -5,7 +5,8 @@ import mongoose from "mongoose"
 import grid from "gridfs-stream"
 import upload from "../utils/Upload.js"
 
-
+const url = "https://earthboxerserver.herokuapp.com"
+// const url = "http://localhost:8000"; // image wagera k liye likja hai 
 const router = express.Router();
 
 
@@ -79,11 +80,10 @@ conn.once('open', () => {
     gfs.collection('fs');
 });
 
-const url = "https://earthboxerserver.herokuapp.com"
-// const url = "http://localhost:8000"; // image wagera k liye likja hai 
+
 router.post('/file/upload', upload.single('file'), (request, response) => {
     if (!request.file)
-        return response.status(404).json("File not found");
+        return  response.status(404).json("File not found");
 
     const imageUrl = `${url}/file/${request.file.filename}`;
     console.log(imageUrl)
